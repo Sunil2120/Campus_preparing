@@ -1,0 +1,26 @@
+What is DBMS ? Mention advantages.. 
+https://www.tutorialspoint.com/Advantages-of-Database-Management-System
+
+What is database?
+A database is an organized collection of data, so that it can be easily accessed and managed.
+You can organize data into tables, rows, columns, and index it to make it easier to find relevant information.
+
+What is RDBMS ? Properties..
+https://www.geeksforgeeks.org/rdbms-full-form/
+
+Types of database languages 
+https://www.tutorialspoint.com/Database-Languages
+
+ACID properties (VVVVV IMP) 
+refer notes
+
+Difference between vertical and horizontal scaling 
+https://www.geeksforgeeks.org/horizontal-and-vertical-scaling-in-databases/
+
+What is sharding?
+https://www.geeksforgeeks.org/what-is-sharding/
+
+Keys in DBMS
+https://afteracademy.com/blog/what-are-the-different-types-of-relationships-in-dbms
+
+Normalization is the process of organizing data into a related table; it also eliminates redundancy and increases the integrity which improves performance of the query.

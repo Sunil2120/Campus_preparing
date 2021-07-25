@@ -1,0 +1,26 @@
+
+
+steps you should follow when ur explaining projects
+
+step 1: descript your project(wt it is doing)
+step 2: problems it is solving
+step 3: stacks used
+step 4: problems you faced while creating this project
+
+
+
+describe your project
+
+It is called sorting-Algo-visualizer. It is used to visualize various sorting algorithms such as merge sort, quick sort, bubble sort, and heap sort. Users also have an option to select the size of the array, the speed of the animations, and also which sorting algorithm.
+
+Problems your project solves:
+Sometimes it would be difficult to know how a particular sorting algorithm works. Through this application, the user could clearly understand how a particular algorithm works and how the elements of the array change throughout the algorithm.
+
+stack which I have used:
+Since I am creating a single-page application, I have used ReactJS which is quite fast when compared to other frameworks.
+
+Problems you faced while creating this project:
+How can I show animations?
+used a temp_array of pairs (index, value) whenever a value at a particular of an array changes append the pair to the temp_array
+used settimeout in every iteration to bring out the animations.
+When the user changes the speed, the time delay is increased or decreased accordingly.

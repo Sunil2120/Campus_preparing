@@ -1,0 +1,169 @@
+Installations
+
+what is the Django Framework?
+Django is a web framework especially for rapid development
+reducing development time
+
+pip install django
+django-admin startproject project_name
+python manage.py runserver
+manage.py helps us to interact with django
+db.sqlite3 database file
+urls.py path is an addressable unit which helps in routing through  out the application
+settings.py is the core instructions for  our project
+we will include all our html files in templates-->main folder
+when we try to render a html file django automatically searchs in templates folder
+without using views if we want to render html pages path('home/',TemplateView.as_view(template_name="home.html"))
+when application is made up of multiple smaller applications to create each small applications
+python manage.py startapp app_name
+to let django know that this small application exist in settings.py include app_name in installed_apps.
+copy urls.py  from core project  to our app
+to tell django that app urls exist  path('app1/',include('main.urls')) if we create urls in app it will include http://120.000.8000/app before it
+app/jdkj/jd checks is urls.py of app
+app2/jdjd/djdkj checks in urls.py of app2
+to create path path('',views.home,name="home")#name is alias name we can use in our path
+request --- when users makes some request to the server either post or get that information is bundled in request which is passed as an arguement to view functions
+render -- render is going to sticks data we will use this data in our html page
+Django uses object relation mapping tool 
+so we can continue writing in python and django gonna convert it to sql which is used to manage and build database
+to build table create classes in models.py
+note: slug is part of url which is used in dynamic routine 
+# it is like primary key created for each row and is unique
+
+class Post(models.Model):
+	slug = models.SlugField(max_length=255)
+
+	def __str__(self):# This is basically telling django when we collect data from database how do you want to return it, we return the data by default we'll show the title
+		return self.title
+
+	alldata=model.objects.all()
+	print(alldata)# prints all titles
+
+to put the tables we have created in django database
+python manage.py makemigrations
+python manage.py migrate
+
+when we change the schema we should run the above code
+
+creating admin
+python manage.py createsuperuser
+to go to admin site /admin
+we shd register tables to view this tables on our adminsite
+admin.py --> admin.site.regiser(Model_name)
+
+models.objects.all() //to get all rows
+data to html page shd be passed as dict 
+
+we are not storing images in database we are storing links to that images
+image = models.ImageField(upload_to="images/",default='default.png')
+
+#this will checks in media folder
+
+
+create media folder in our project directory
+
+to use and  manage images in our django project pip install pillow
+<img src = post.image.url>
+
+
+# to link media_urls is used by browser to find images
+in urls.py
+
+from django.conf.urls.static import static
+from django.conf import settings
+
+if settings.DEBUG:
+	urlpatterns+= static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
+
+
+
+
+in settings.py
+
+MEDIA_URL = "/media/" # this used by website to find images
+MEDIA_ROOT = BASE_DIR / "media" #this used by django to find  images in right folder
+
+
+#for dynamic routing or to create dynamic urls
+path('home/<str:pk>',views.home,name="home")
+#data type can be float,str,int,bool,slug    pk is variable here storing the data passed to the url
+
+in view.py
+
+def single(request,pk):
+
+	data= Post.objects.get(field_name=pk)
+
+<a href='{% url "home/" object.id %}'>blog post 1 </a>
+
+#django-templates
+{% extends 'base.html'%}
+{%block content %}
+write something
+{% endblock %}
+
+
+in base.html
+
+{%block content%}
+{% endblock %}
+
+
+//registration and login
+
+
+in views.py
+from django.shortcuts import redirect
+
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.forms import UserCreationForm
+#default GET request
+#form submit POST request
+
+def register(request):
+
+	if request.method=='POST':
+		form = UserCreationForm(request.POST)#passing information provided by html page to this usercreation form
+		if form.is_valid():
+			form.save()#commit the new created user
+			username = form.cleaned_data.get('username')#name of the input in html
+			password = form.cleaned_data.get('password1')#name of the input in html
+			user = authenticate(username=username,password=password)
+			login(request,user)
+			return redirect('url_name')# to redirect to a particular url
+		else:
+			return redirect('register')
+
+	return render(request,"main/register.html",context)
+
+
+def login(request):
+
+	if request.method=='POST':
+		username = request.POST.get('username')
+		password = request.POST.get('password')
+		user = authenticate(username=username,password=password)
+		if user is not None:
+			return login(request,user)
+		return redirect('login')
+	return render(request,"main/login.html",context)
+
+
+	if user.is_authenticated
+
+
+def logoutPage(request):
+	logout(request):
+	return redirect(request,'main/login.html')
+
+
+
+
+
+
+
+
+
+
+
+

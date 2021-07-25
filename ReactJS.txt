@@ -1,0 +1,390 @@
+https://www.interviewbit.com/react-interview-questions/
+
+React JS crash course 2021 by traversy media
+
+React is Javascript library for building user interfaces
+
+React runs on the client as a SPA(single page application), but can be used to build full stack apps by communicating with a server/API (eg. MERN stack)
+
+React is often referred to as front-end "framework" because it is capable and directly comparable to a framework such as Angular or Vue.
+
+
+Why Would you use react?
+
+Structure the "view" layer of your application
+Reusable components with their own state
+JSX- Dynamic markup
+Interactive UIs with Virtual DOM(updates parts of the html without reloading the page)
+Performance and testing
+Very popular in the industry
+
+components render/return JSX(JavaScript Syntax Extension)
+components can also take in "props"
+<Header title="My Title"/>
+
+Functional Components
+export const Header = ()=>{
+	
+	return (
+		<div>
+			<h1>My header</h1>
+		</div>
+	)
+}
+
+
+Class based components
+export default class Header extends React.Component {
+	
+	render(){
+		return (
+			<div>
+				<h1>My header</h1>
+			</div>
+		)
+	}
+}
+
+Components can have "state" which is an object that determines how component renders and behaves
+
+"App" or "gobal" state refers to state that is available to the entire UI, not just a single component.
+
+Prior to React 16.8, we had to use class based components to use state.
+Now we use functional components with hooks.
+
+React Hooks are functions that let us hook into the React state and lifecycle features from function components.
+
+useState - returns a stateful value and a function to update it
+useEffect - performs side effects in function components.
+useContext,useReducer,useRef
+
+#create-react-app command line interface to get all files required to start building react app
+
+npm create-react-app my-app
+cd my-app
+npm start
+
+index.html file main single page where all components gets mounted
+ReactDom.render(JSX,(where to add this JSX)document.getElementById('root'));
+
+JSX
+class --> className
+for -->htmlFor
+variable -->{variable_name}
+
+while returning JSX return it in a single element(wrap it inside div)
+
+function App(){
+	const name="anil"
+	const x=true
+
+	return (
+		<div className="container">
+			<h1>{ Js logic }</h1>
+			<h2>{ name+ (x==true)?'Anil':'Sunil'}</h2>
+		</div>
+	)
+}
+export default App
+
+
+to create your components
+in src folder create components folder inside that create your components(js file)
+
+
+<Header title='hello' arg2='default'/>
+now this will be passed as props
+
+props={
+	'title':'hello',
+	'arg2':'default'
+}
+
+
+this can be used in the component file
+
+
+const App= (props)=>{
+	return (
+		<div>	
+			{props.title}
+		</div>
+	)
+}
+
+//to set default prop
+App.defaultProps ={
+	title:'default tile'
+}
+
+
+to set prop types
+import Proptypes from 'prop-types'
+App.propTypes={
+	title:Proptypes.string,
+	n:Proptypes.number
+}
+//when we are giving attributes this type should be maintained else
+throws error
+
+//styling of components can be done using external css or by using style compoonents
+return (
+	<div>
+		<h1 style={{ color:title}}>Title</h1>
+	</div>
+)
+
+//while using style use double braces
+//because style attribute takes dictionary
+//we can create dictitonary variable and assign
+
+return(
+	<div>
+		<h1 style={variable_name}>Title</h1>
+	<div>
+)
+
+//css in JS
+const variable_name={
+	color:red,
+	backgroundColor:blue
+}
+//to set a event to a button
+
+onClick=(e)=>{
+	do someething	
+}
+<button onClick={onClick} >{text} </button>
+
+//you can also pass this function as props
+App.proptypes={
+	onClick:Proptypes.func;
+}
+
+//when you mapping we should make sure the elements of the list should be unique
+//<h4 key={task.id}>{task.description}</h4>
+
+//to use states inside function we use react hooks
+import {useState} from 'react'
+useState returns two things 
+state and the function which is used to update this state
+const [tasks,setTasks]=useState([data])
+//we cannot directly modify the state(task) it is imutable we should recreate and send it
+//every time we change state the dom has to be reloaded 
+
+//to recreate tassks
+//directy write
+setTasks(//new state)
+setTasks(tasks.filter((task)=>{task.id!=id}))
+setTasks([...tasks,newTask])
+
+//when you reload everything reloads to initial state
+
+//states get passed down
+//events get passed up
+
+//there can be component level state or global state
+
+
+//to build used for deploying
+//npm run build
+//creates a build folder conataining files necessary for deploying
+
+
+
+//working with json server or json with react
+npm i json-server
+
+
+//useEffect --> used to create or deal with side effects
+//it is often used when u want something to happen when page loads
+import {useEffect} from 'react'
+
+useEffect(()=>{
+	const fetchTasks= async ()=>{
+		const res= await fetch('http://9000/tasks')
+		const data=await res.json()
+		setTasks(data)
+	}
+	fetchTasks()//call aswell
+},[])
+//in the list below is used when u want this function to run if some value in the list changes
+
+
+//react hooks
+//u can use hooks only inside function components
+// not inside class components
+//react hooks cannot be placed inside conditional states
+//react hooks must be called in exact same order in every render
+//note: when u update state component rerenders
+
+1. useState
+//return two values actual state and function to that state
+//whenever u want to change the state value based on previous value use function inside
+//set state //overwrite the actual state
+
+
+const [count,setCount]=useState(4)//this runs every time function renders
+// to avoid this use function inside useState which runs only when function is rendered
+for the first 
+
+function func(){
+	console.log('run function')
+}
+const [count,setCount]=useState(func);//runs every time function renders i e state changes
+
+
+
+const [count,setCount]=useState(()=>{
+	console.log('run function')
+	return 4
+})//first time
+
+
+
+import React ,{useState} from 'react'
+
+const App = ()=>{
+	
+
+	function decrementCount(){
+		//setCount(count-1)
+		setCount(prev=> prev-1)
+	}
+
+	function incrementCount(){
+		setCount(prev=>prev+1)
+	}
+	return({
+		<>
+			<button onClick={decrementCount}>-</button>
+			<span>0</span>
+			<button onClick={decrementCount}>+</button>
+		</>
+	})
+
+
+}
+
+export default App;
+
+//if your state is object and u want to update only one property
+const [state,setState]=useState({name:'anil',initial:'ms'})
+
+setState(prevState=>{
+	return {name:'sunil'}//this will overwrites our current state and initial is missed out
+})
+
+//to avoid this
+setState(prevState=>{
+	return {...prevState,name:'sunil'}//this will overwrites our current state and initial is missed out
+})
+//instead of this, use different states
+
+
+//useEffect 
+//when we want sideeffect to happen when state or something changes
+//takes a function and array as argument
+//whenever the variable inside that array changes this function is ran
+ 
+ useEffect(()=>{
+ 	console.log("function")//runs every single timre ou function runs
+ });//runs every time
+
+  useEffect(()=>{
+ 	console.log("onMount")
+ },[]);//runs for the first time (like component did mount)
+
+
+ useEffect(()=>{
+ 	console.log('resource change')
+ },[resource])//run when resource changes
+
+
+
+useEffect(()=>{
+	
+	console.log('resource change')
+
+	return()=>{
+		console.log('return from resource chage')//helps is cleanning up before running above line
+	}
+},[resourceType])
+
+
+useEffect(()=>{
+	
+	window.addEventListener()
+
+	return()=>{
+		window.removeEventListener()
+	}
+},[])
+
+//finally useEffect is used if u want sideeffects when something changes like 
+componentmounts(refresh),componetdemounts,state,props,value changes updates this function will be run
+
+
+
+//react router
+//revise it in routes
+// npm install react-router-dom
+
+import {BrowserRouter as Router,Switch,Route} from 'react-router-dom'
+
+
+//for the  content to have ability to use routing wrap it inside <Router></Router>
+
+<Router>
+	<div className-"App">
+	<Nav />
+	<Route path="/" component={Home}/>
+	<Route path="/about" component={About}/>
+	<Route path="/shop" component={Shop}/>
+	</div>
+</Router>
+//url=="/"  this renders all home,about,shop has all them has /
+
+
+Switch as soon as it find url then it stops checking
+<Switch>
+	<div className-"App">
+	<Nav />
+	<Route path="/" component={Home}/>
+	<Route path="/about" component={About}/>
+	<Route path="/shop" component={Shop}/>
+	</div>
+</Switch>
+//url=="/"  this renders  home
+//url=="/home" this render home and not home as it is first match
+
+//to avoid this use exact
+<Router>
+	<div className-"App">
+	<Nav />
+	<Route path="/" exact component={Home}/>
+	<Route path="/about" exact component={About}/>
+	<Route path="/shop" exact component={Shop}/>
+	</div>
+</Router>
+
+
+//<a href="#"></a>
+this tag reloads page to avoid this use Link
+import {Link} from 'react-router-dom'
+<Link to='/about'></Link>
+
+
+//dynamic routing
+import {Link} from react-router-dom
+
+<Link to={`/shop/${item.itemid}`}>{item.name}</Link>
+
+//in the APP.js
+<Route path='/shop/:id' exact component={newpage}/>
+<Route path='/shop/:id' exact component={<newPage title='ndi'/>}/>
+
+//in the new page to get data specific to that id
+this functional componets has props.match
+//to get the id props.match.parms.id
+

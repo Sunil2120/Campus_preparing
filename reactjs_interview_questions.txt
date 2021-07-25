@@ -1,0 +1,215 @@
+what is React?
+React is an open-source javascript library for building user interfaces
+It is maintained  by Facebook
+
+React is a Framework or Library?
+A javascript library for building user interfaces
+
+React vs Angular
+
+react							Angular
+User library					Complete Framework
+Virtual DOM						Real DOM
+one way Binding					Two way Binding
+Flux Design pattern				Component Based MVC
+Facebook						Google
+
+Create a simple project using CLI?
+install npm
+npm install -g create-react-app 
+
+to start react application
+npm create-react-app project_name
+
+to start the server localhost:3000
+npm start
+
+Explain the react Project?
+
+what are the features of React?
+
+JSX is used with React to describe what the user interface should look like
+A component is like a function which returns JSX(HTML elements)
+Speedy performance as only the changed components are updated
+One-way data binding keeps everything modular and fast
+Virtual DOM is lightweight representation of real-DOM
+
+JSX-is a syntax extension to Javascript
+By using jsx,you can write HTML structures in the same file that contains javascript code
+It is used with React to describe how the user interface should look like
+
+Can JSX be directly read by the web browsers?
+web browsers cannot read jsx directly it is because the browsers are built to only read regular js objects and Jsx is not a regular js object
+For a web browser to read a  jsx file it should be transformed into regular js object. for this JS api Babel is internally used.
+
+virtual DOM
+In a Real DOM whenever a html element changes the entire page is refreshed to update the userinterface. it is quit expensive.
+React keeps a lightweight representation of the Real DOM in the memory, and that is known as Virtual DOM.
+when the state of an object changes, Virtual DOM changes only the object in the Real DOM instead of updating all the objects and this makes things really fast.
+
+
+why use React instead of other frameworks like Angular?
+Easy creation of dynamic web apps
+Reusable Components
+Enhanced performance
+Easy Debugging
+unidirectional data flow
+
+ES5 var React = require('react')
+ES6 import React from 'react'
+ES5 module.exports = Component
+ES6 export default Component
+
+What is an event in React?
+An event is an action triggered by User or by system event like pressing a key, a mouse click etc.
+
+Why is there a need of using keys when using map?
+
+A key is a unique identifier.
+It increases the performance as only the changed components are re-rendered.
+It also helps to determine which components need to be re-rendered instead of re-rendering that all the components every time.
+
+What are Forms in React?
+Using Forms users can interact with the application and enter the required information whenever needed.
+Forms are used for many different tasks like authentication,searching,filtering etc..
+use onChange and state updates.
+
+in jsx comments should be written inside {}
+single  line //
+multi line /* */
+
+React
+Web platform
+HTML
+CSS
+JS,HTML,CSS
+
+React-native
+Mobile-Android,IOS
+NO
+NO
+ReactJS
+
+React            	Angular
+Virtual DOM       	Real DOM
+faster due to 		comparitevely slower
+virtual DOM
+Rendering is 		rendering is Client-side
+Server-side			
+Data-binding 		Data-binding is Bi-dir
+is uni-directional	
+Facebook			Google
+
+What are components in React?
+Components are the building block of any react-application,
+and single app usually consists of multiple components.
+
+It splits the user interfaces into independent reusable pieces that can be processed separately.
+
+A component is a piece of user interface
+
+
+Class based components
+
+render() function returns the HTML(JSX) which is to be displayed in a component.
+
+what is State of a component?
+State of a component is an object that holds some data of that component
+This data influences the output of a component.
+
+update the state of a component
+using the built-in 'setState()' method, we can update the state of a component.
+
+this.setState(prevState=>{ var temp = prevState temp.name="sn" return temp})
+
+what are props in React?
+Props are properties, that allow us to pass arguements or data to components.
+in class based components this.props.attribute
+in function based components props.attribute
+
+Difference between state and props
+states
+Holds information about the components.
+is mutable.
+can be Changed.
+Cannot be accessed by child components.
+
+
+Props
+Allow to pass data from component to other  component as an argument
+are immutable
+Are read-only.
+Props can be accessed by child components.
+
+Higher order components
+Higher order components act as a container for other components.
+This helps in keeping components simple and induces re-usability
+They are generally used when a common logic has to be used for different components.
+
+
+Differences b/w class and functional components
+class StatefulComponent extends React.Component
+{
+	render(){
+
+		return <div>{this.props.title}</div>;
+	}
+
+}
+
+const StatelessComponent = function(props){
+	
+	return (<div>{props.title}</div>)
+	
+}
+
+class based components lifecycle methods of components?
+
+1.getInitialState(): It is executed before the creation of the component
+2.componentDidMount():It is executed when the component gets rendered and placed on the DOM
+3.shouldComponentUpdate():It is invoked when a component decides any changes to the DOM and returns true or false value based on certain conditions.
+4.componentDidUpdate():It is invoked immediately after rendering takes place.
+5.ComponentwillUnmount():It is invoked immediately before a component is destroyed and unmounted permanently.
+
+Redux is an open-source js library used to manage application state
+React used redux for buidling the user interface
+
+React-Router is a package which is used to create routing in react application
+
+React Router is used for developing single page web applications
+
+It allows multiple views in a single application by defining multiple routes in the React app
+React Routing
+Single HTML page
+User navigates multiple views in same file accordance to url
+The page doesnot refresh since it is a single file
+improved performance
+
+
+Conventional Routing
+Each view is a new HTML file
+User navigates multiple files for each view
+The page refreshes every time user navigates
+Slower performance
+
+inline styling in react comp using {{}}
+can be used only for JSX(HTML) elements
+<h1 style={style_object}></h1>
+
+app.css
+import "./app.css"
+use className is jsx
+
+
+
+
+
+
+
+
+
+
+
+
+
+

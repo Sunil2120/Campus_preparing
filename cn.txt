@@ -1,0 +1,350 @@
+
+https://docs.google.com/document/d/1sQlRDw6--HwyxeFL7b4kBsOG-Tz7rXMbpWNnfvJErA4/edit
+2.What do you mean by network topology, and explain types of them 
+https://www.geeksforgeeks.org/types-of-network-topology/
+
+3. Define bandwidth, node and link ? 
+A node is an individual processing unit , it has capabaility to communicate with other nodes on demand , process the information it receives. ... A link is a physical and logical network component used to interconnect hosts or nodes in the network.
+
+Bandwidth is measured as the amount of data that can be transferred from one point to another within a network in a specific amount of time. Typically, bandwidth is expressed as a bitrate and measured in bits per second (bps).
+
+
+What is Gateway?
+https://www.youtube.com/watch?v=ai5bFPVToMU
+A gateway is a network node that connects two networks using different protocols together.
+
+It also acts as a "gate" b/w two networks. IT may be a router,firewall,server, or other devices that enables traffic to flow in and out of the network.
+
+Difference between gateway and router
+
+1) When two devices are connected using different protocol, then network node called gateway is used to connect those two devices.
+
+2) It routes the traffic between two networks.
+
+3) For example router at our home acts as gateway  between our LAN cable and Wide area network.
+
+4) It is node through which one network enters another network
+
+Router
+Network device that forward packet from one network to another. Based on internal routing tables, router read each incomming packet and decide how to forward it. Routers  work at network layer(layer3) of the protocol
+
+Route traffic from one network to other.
+
+Routers provide additional features like Static routing and wireless networking/ipv6 address, Mac address
+
+Supports dynamic routing.
+
+works on layer 3 and layer 4 of OSI model.
+
+
+Gateway
+Device that converts one protocol or format to another. A network gateway converts packets from one protocol to another. The gateway functions as an entry/exit point to the network.
+
+Translate from one protocol to other.
+
+Protocol conversion like VoIP to PSTN or network access control etc.
+
+Does not support dynamic routing.
+
+Works up to layer 5 of OSI MODEL. 
+
+
+8) what does ping command do?
+PING (Packet Internet Groper) command is used to check the network connectivity between host and server/host. This command takes as input the IP address or the URL and sends a data packet to the specified address with the message “PING” and get a response from the server/host this time is recorded which is called latency. Fast ping low latency means faster connection. Ping uses ICMP(Internet Control Message Protocol) to send an ICMP echo message to the specified host if that host is available then it sends ICMP reply message. Ping is generally measured in millisecond every modern operating system has this ping pre-installed. 
+
+9)What is DNS, DNS forwarder, NIC, ? 
+https://www.youtube.com/watch?v=JkEYOt08-rU
+In Domain Name System (DNS) terms, a DNS forwarder is a DNS server that is used to forward DNS queries for external DNS names to DNS servers outside that network.
+
+NIC
+https://www.tutorialspoint.com/what-is-network-interface-card-nic
+
+MAC address
+MAC stands for Media Access Control
+Every node in the LAN is identified with the help of MAC address only.
+IP Address = Location of a person.
+MAC Address = Name of the person.
+
+Differences b/w MAC address and IP address
+
+Routers - takes IP address
+Switch - takes MAC address
+
+Every node in the LAN is identified with the help of MAC address.
+Physical address or Hardware Address.
+Unique
+Cannot be changed
+Assigned by the manufacturer implemented in NIC
+Represented in hexadecimal
+Example:70-20-84-99-ED-FC(48 bits)
+Separator: -,.,: (decided by the manufacturer)
+
+
+IP Address										MAC address
+Logical Address									Physical Address
+Needed for communication						Needed for Communication
+32 Bits											48 Bits
+Represented in decimal							Represented in hexadecimal
+Router needs IP address to forward data			Switches  needs MAC address to forward data
+Example: 10.10.23.56							Example: 70-20-84-99-ED-FC
+
+
+14) What is Firewalls?
+https://www.youtube.com/watch?v=o_vyfo3Hw0Y&t=737s(gate smashers)
+https://www.geeksforgeeks.org/introduction-of-firewall-in-computer-network/
+https://www.youtube.com/watch?v=aUPoA3MSajU(easy explanation)
+
+15)Different types of delays
+
+https://www.youtube.com/watch?v=wo3M5G9ZHo0
+refer video for problems
+
+ latency(delay)
+ The Latency or delay defines how long it takes for an entire message to completely arrive at the destination from the time, the first bit is sent out from the source.
+
+ Components of Latency(delay)
+ Latency is made of four components:
+ 1) Transmission delay.
+ 2) Propagation delay.
+ 3) Queuing delay.
+ 4) Processing delay.
+
+ Sum of all these delays forms the latency.
+ Latency = Transmission delay+ Propagation delay+Queuing delay+Processing delay
+
+Transmission Delay/Time
+
+Time it takes to place the complete data packet(of  a message) on the transmission medium.
+
+source(A)---intermediate_node----intermediate_node--destination(B)
+
+The time taken by source to place complete message on transmission medium
+
+Transmission Time = (Message Size)/Bandwidth
+
+
+Propogation Delay/Time
+
+Time it takes for a bit to go from Device A to Device B
+
+source(A)---intermediate_node----intermediate_node--destination(B)
+
+The propogation time is calculated by dividing the distance by the propogation speed.
+
+Propogation Time = Distance/propogation speed
+
+
+Queuing Delay/Time
+
+The time needed for each intermediate or end device to hold the message before it can be processed.
+
+source(A)---intermediate_node----intermediate_node--destination(B)
+
+* the time taken by source to place the message on transmission media is Transmission delay.
+* the time taken by a bit to go from source to dest is propogation delay.
+* the total time the intermediate nodes and even end device holds the message is queuing delay.
+
+The queuing time is not a fixed factor, it changes with the load imposed on the network.
+
+when there is heavy traffic on the network, the queuing time increases.
+
+
+Processing Delay/Time
+
+The total time the node  takes to process the message.
+
+Usually processing delay and queuing delay is not taken into account while calculating latency.
+
+
+16) 3 way handshaking 
+https://www.youtube.com/watch?v=qIEHUUt2Wfc and also refer notes(green color one)
+
+17) What is HTTP and HTTPS protocol ? 
+https://www.javatpoint.com/http-vs-https
+
+Application layer protocols
+https://www.tutorialspoint.com/data_communication_computer_network/application_protocols.htm
+
+21) Difference b/w TCP and UDP
+https://www.youtube.com/watch?v=jJyXpMmXJI0&t=7s
+https://www.geeksforgeeks.org/differences-between-tcp-and-udp/
+Both are Transport layer protocols
+
+TCP is connection oriented means it establishes TCP connection before sending data to the other device.
+
+UDP is connectionless.
+
+TCP is more reliable than UDP as it is connection oriented.
+
+UDP is  less reliable  as it is connectionless.
+
+TCP follows ordering whereas in UDP packets there is no ordering.
+
+TCP provides Error control using checksum it is mandatory
+UPD also provides Error control using checksum but it is optional
+
+TCP provides slow transmission when compared to UDP
+UDP is faster when compared to TCP(packets can arrive from different routes)
+
+TCP provides Flow control and Congestion Control.
+UDP doesnot provides FLow control and congestion control
+
+There is Feedbacks in TCP
+there isn't any feedbacks in UDP
+
+applications uses TCP: HTTP,FTP,POP
+applications uses UDP : DNS
+
+23)Network Devices
+https://www.youtube.com/watch?v=eMamgWllRFY
+
+
+
+Network interface card (NIC)
+for a device to connect to a network it needs Network interface card.
+It is a physical and datalink layer device used by computers to connect and communicate with other devices on the LAN or on the network. 
+There is unique Physical address to each NIC which is called MAC address it is hexadecimal 6byte(6*8 = 48bits)
+
+Wifi card is used to connect any device to local network wirelessly.
+
+Wifi Access Point(WAP)
+The physical area of the network which provides internet access through wifi is called wifi-hotspot or wifi access point.
+every access point has a range of 120 to 150 feet only devices within this  range can connect to the network.
+There is also a limit to the number of devices connected.
+
+With NIC and Wifi card a computer is ready to connect to other computer.
+we need hub or switch to connect to other computer.
+
+Hub
+A hub is a physical layer device which has multiple ports that are used to connect multiple computers or segments of LAN together.
+Data is transferred  to all the devices connected . all the devices expect the intended devices rejects the data.
+Active Hub: amplify the signal as it moves from one device to another.
+Passive Hub: allow the signal to be passed without any change.
+
+Hub is not so secure and safe.
+Copying the data packets on all the interfaces makes it slower and more congested and wastes bandwith
+to overcome this problem we use of network switch.
+
+Switch
+
+Hub just does the work of data forwarding, a switch does "Filter and Forwarding" which is a more intelligent way of dealing with the data packets.
+
+when a switch receives a packet it checks for it destination address and forward the packet to correct destination.
+It even checks the packet for collision and other network errors 
+This technique is called packet switching technique.
+Switch also maintains a list of all devices network address connected to it in this way it prevents the overloading of traffic on a network.
+
+
+Router 
+Since Router makes use of IP address it is a network layer device. It can work like  a switch that routes data packets based on their IP addresses
+
+Router is mainly used to connect multiple networks supporting same protocols.
+Router are generally used to connect multiple lans to internet
+
+it maintains routing table to determine the best possible route a packet can travel to reach destination accurately and quickly
+
+Static and dyanamic routing.
+
+It also amplifies the signals before transmitting so it is also called repeaters.
+
+Differences b/w hub switch and routers.
+
+Hub works in physical layer
+Switch works in data/network layer
+router works in network layer
+
+Hub Broadcast messages
+Switch multicast messages
+Router routes  messages
+
+Hub sends data  as bits.
+Switch sends  data as frames
+Router sends data as packets
+
+Hub connects devices within the same network
+Switch connect devices to network
+Router connect two different network(same protocols)
+
+Hub Doesnot store MAC addresses
+Switch Store MAC addresses
+Router store MAC addresses
+
+
+Bridge
+
+A bridge connects two or more LANS(same protocols).It operates at data link layer. Bridges handles network that follow the same protocol.
+
+When it gets frame it check for destination address and forwards the packet to right destination
+can forward multiple frames at the same time.
+
+forwarding,filtering,blocking of frames are functions of bridges.
+
+Gateway
+Gateway is a network device used to connect two or more dissimilar networks i.e networks using different protocols. packet filtering technique is also used here.
+
+Repeaters are used to extend transmissions so that the signal can cover longer distances or be received on the other side of an obstruction.
+It increases the power of signal and re-transmits it.
+
+
+24) VPN, advantages and disadvantages of it
+https://www.geeksforgeeks.org/introduction-to-virtual-private-network-vpn/
+https://www.youtube.com/watch?v=_wQTRMBAvzg
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
