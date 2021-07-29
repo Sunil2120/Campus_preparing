@@ -1,0 +1,99 @@
+Secured Messenger
+
+Secured Messenger is a Real-time messaging app where message sent by one user to another user is encrypted and then stored in db.
+Even if unauthorized user get control over the db he will not be able to understand the messages as it is encrypted.
+To encrypt the message sender can either select AES or DES encrypting algorithm which is imported from crypto-js npm module.
+
+Problems it is solving:
+	secure exchange of messages b/w users
+	messages are encrypted and then store in db	
+	It is real-time as we are using firebase
+stack used:
+	React JS, firebase both for authentication and database,HTML,bootstrap.
+
+challenges faced:
+	1) messages are stored in encrypted form in db
+	if we want to decrypt it how we'll know in which algo it is encrypted, to solve this problem I included an additional field in the message table called type, based on the value of the type  I used to decrypt the message.
+	2) what should be the private keys to encrypt and decrypt.
+
+Future implements:
+	1) to show whether a user is online/offline
+	2) try to implement asymmetric encrypting algorithm RSA
+	3) allowing users to send requests.
+	
+
+I have 3 components Home, Nav and  Message.
+for authentication and for the database I am using firebase.
+In App.js I am maintaining two state information that is isSignedIn and current user's information.
+If isSignedIn is true I will include the Home component and Nav component.
+App.js is passing user's information as a prop to the home component.
+
+In home.js 
+I am maintaining 4 state information
+other_users: which stores the information of all users who have logged into my application.
+currentUser: user's information passed from app.js
+
+
+In componentDidMount: useEffect when home component gets rendered
+from database I will get the list of all users : db.collection("users").snapshot()
+if currentUser's data is not present in the db I will add his information.
+db.collection("users").add({ name: , photoUrl: , email: }) all this information is obtained from user object pass down by app.js
+Now I will update my state information 
+other_users and currentUser.
+created a list of Li elements containing other user's name and message button.
+message button will dynamically route to "/message/"+otheruser.id
+when app.js sees this URL it renders message.js component accordingly.
+
+In Message.js
+This component is rendered dynamically according to user's id.
+state information:
+	other_user:  to which cur_user want to text,
+	cur_user:  which is passed as a prop by app.js
+	messages:  messages cur_user and other_user sent each other.
+
+in componentDidMount:
+1) we will query the users table to get the information of other_user by using the id which is in the URL.
+update other_user
+2)get the messages which is exchanged b/w other_user and cur_user
+order the messages by time stamp
+update messages
+
+created a div elements for all the messages and aligned them accordingly.
+Messages sent by me will be aligned towards left.
+messages received will be towards right.
+
+at the end of the page we have a form which has input tag type="textarea"
+and 2 buttons AES and DES
+If a user enters the text and press AES, AES function will be invoked.
+If a user enters the text and press DES, DES function will be invoked.
+
+To implement  AES and DES symmetric algorithms I have imported
+crypto-js npm module.
+
+In AES function
+1) encrypt the message.
+2) key is from_email+to_email.
+3) cipher text is converted to string
+4) we will push 
+	{
+	from : sender's email,
+	to: receiver's email,
+	message: cipher,
+	type: either 1 or 2 (to identify AES and DES)
+	}
+var message = CryptoJS.AES.encrypt(message,from+to)
+	on to messages table.
+A similar thing is done for DES
+
+while creating div elements for messages we will decrypt the cipher text based on the type
+var message = CryptoJS.AES.decrypt(cipher,from+to)
+
+
+how it is realtime
+we have used onSnapshot to fetch data (realtime)
+whenever data in db changes it automatically triggers autoreferesh
+which in our react app invokes componentDidmount life cycle methods which changes the state message and elements are re-rendered
+
+tables in database
+users: (id,user-object provided by firebase auth)
+message: (id,message,from,to,m.type)

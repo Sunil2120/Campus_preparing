@@ -1,11 +1,14 @@
 
 
+sorting algo visualizer
 steps you should follow when ur explaining projects
 
 step 1: descript your project(wt it is doing)
 step 2: problems it is solving
 step 3: stacks used
 step 4: problems you faced while creating this project
+
+
 
 
 
@@ -24,3 +27,5 @@ How can I show animations?
 used a temp_array of pairs (index, value) whenever a value at a particular of an array changes append the pair to the temp_array
 used settimeout in every iteration to bring out the animations.
 When the user changes the speed, the time delay is increased or decreased accordingly.
+
+
